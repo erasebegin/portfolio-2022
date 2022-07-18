@@ -50,7 +50,7 @@ export default function Divider({ color, alt, invert }) {
 
 const StyledSvg = styled.div`
   position: absolute;
-  top: 0;
+  top: -1px;
   left: 0;
   width: 100%;
   transform-origin: 0% 0%;
@@ -63,6 +63,6 @@ const StyledSvg = styled.div`
   `}
 
   svg {
-    fill: ${(props) => (props.$color ? props.$color : 'white')};
+    fill: ${(props) => (props.$color || '#fff')};
   }
 `;

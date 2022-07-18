@@ -9,24 +9,21 @@ import {
   Flex,
   Heading,
   Image,
-  Spacer,
   Stack,
   Text,
 } from '@chakra-ui/react';
 
-export default function Hero({ openContact, setOpenContact }) {
+export default function Hero({ setIsOpen, isOpen }) {
   const [showLogos, setShowLogos] = useState(false);
 
   const theme = useTheme();
 
-  const transition = time => `${time || '400ms'} ease-in-out`;
-  console.log(transition());
   return (
     <Box minH="800px">
       <Divider color={theme.colors.blue[100]} />
       <Stack
         pt={[showLogos ? 15 : 0, showLogos ? 15 : 0, showLogos ? 150 : 50]}
-        transition="400ms ease-in-out"
+        transition="200ms ease-in-out"
       >
         <Flex
           align="center"
@@ -73,7 +70,7 @@ export default function Hero({ openContact, setOpenContact }) {
             top={[0, 0, showLogos ? '-2rem' : '0.5rem']}
             h={[10, 10, 20]}
             colorScheme="blue"
-            transition="400ms ease-in-out"
+            transition="200ms ease-in-out"
             opacity={[showLogos ? 1 : 0, showLogos ? 1 : 0, 1]}
           >
             <Stack justify="start" height="100%" pt={3}>
@@ -92,13 +89,13 @@ export default function Hero({ openContact, setOpenContact }) {
                 showLogos ? '200px' : '300px',
                 showLogos ? '300px' : '400px',
               ]}
-              transition="400ms ease-in-out"
+              transition="200ms ease-in-out"
               objectFit="cover"
             />
           </Box>
 
           <Button
-            onClick={() => setOpenContact(!openContact)}
+            onClick={() => setIsOpen(!isOpen)}
             pos={[
               showLogos ? 'absolute' : 'initial',
               showLogos ? 'absolute' : 'initial',
@@ -138,16 +135,16 @@ export default function Hero({ openContact, setOpenContact }) {
           </Button>
         </Flex>
 
-        <Box px={3} pt={showLogos ? 150 : 50} transition="400ms ease-in-out">
-          <Heading as="h1" size="4xl" mb={3}>
+        <Box px={3} pt={showLogos ? 150 : 50} transition="200ms ease-in-out">
+          <Heading as="h1" size={['3xl', '4xl']} mb={3}>
             Chris Haupt's
           </Heading>
           <Heading as="h2" size="2xl" mb={10}>
             Portfolio
           </Heading>
-          <Heading as="h3" size="lg" maxW={700} fontWeight="400">
+          <Heading as="h3" size="lg" maxW={700} fontWeight="400" pb={20}>
             A collection of some of my favourite projects created over the years
-            using primarily <b>React</b>.
+            using mostly <b>React</b>.
           </Heading>
         </Box>
       </Stack>

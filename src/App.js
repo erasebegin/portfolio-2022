@@ -1,25 +1,28 @@
-import React from 'react';
-import {
-  ChakraProvider,
-  Box,
-  VStack,
-  Grid,
-  theme,
-} from '@chakra-ui/react';
+import { useState } from 'react';
+import { ChakraProvider, Box, VStack, theme, Grid } from '@chakra-ui/react';
 import { ColorModeSwitcher } from './components/ColorModeSwitcher';
 import Hero from './components/Hero';
+import Contact from './components/Contact';
+import Section from './components/Section';
+import BgBlur from './components/BgBlur';
+import sectionData from './data/sectionData';
 
 function App() {
+  const [openContact, setOpenContact] = useState(false);
+
   return (
     <ChakraProvider theme={theme}>
-      <Box textAlign="center" fontSize="xl">
-        <Grid minH="100vh" p={3}>
-          <ColorModeSwitcher justifySelf="flex-end" />
-          <VStack spacing={8}>
-            <Hero />
-          </VStack>
-        </Grid>
-      </Box>
+      <Grid textAlign="center" fontSize="xl" minH="100vh">
+        <ColorModeSwitcher justifySelf="flex-end" />
+        <VStack spacing={8}>
+          <Hero isOpen={openContact} setIsOpen={setOpenContact} />
+          <BgBlur show={openContact} />
+          <Contact isOpen={openContact} setIsOpen={setOpenContact} />
+          {sectionData.map(section => (
+            <Section sectionData={section} />
+          ))}
+        </VStack>
+      </Grid>
     </ChakraProvider>
   );
 }
