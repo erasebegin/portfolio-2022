@@ -12,6 +12,7 @@ import {
   Stack,
   Text,
 } from '@chakra-ui/react';
+import HeroSvg from './HeroSvg';
 
 export default function Hero({ setIsOpen, isOpen }) {
   const [showLogos, setShowLogos] = useState(false);
@@ -24,7 +25,29 @@ export default function Hero({ setIsOpen, isOpen }) {
       <Stack
         pt={[showLogos ? 15 : 0, showLogos ? 15 : 0, showLogos ? 150 : 50]}
         transition="200ms ease-in-out"
+        pos="relative"
       >
+
+        <HeroSvg
+          side="left"
+          display={['none', 'none', 'none', 'initial']}
+          ariaLabel="frontend developer"
+          pos="absolute"
+          bottom="15rem"
+          left="-10rem"
+          maxW="300px"
+        />
+        
+        <HeroSvg
+          side="right"
+          display={['none', 'none', 'none', 'initial']}
+          ariaLabel="morning person, javascript junkie"
+          pos="absolute"
+          bottom="10rem"
+          right="-10rem"
+          maxW="300px"
+        />
+
         <Flex
           align="center"
           justify="center"
@@ -143,8 +166,8 @@ export default function Hero({ setIsOpen, isOpen }) {
             Portfolio
           </Heading>
           <Heading as="h3" size="lg" maxW={700} fontWeight="400" pb={20}>
-            A collection of some of my favourite projects created over the years
-            using mostly <b>React</b>.
+            A collection of my frontend projects created over the years using
+            mostly <b>React</b>.
           </Heading>
         </Box>
       </Stack>

@@ -22,7 +22,7 @@ const IconContainer = styled.div`
   margin-right: 0.5rem;
   position: relative;
 
-  @media (max-width: 600px) {
+  @media (max-width: 400px) {
     margin-bottom: 1rem;
   }
 
@@ -36,7 +36,7 @@ const IconContainer = styled.div`
 
   img {
     max-height: 50px;
-    max-width: 50px;
+    max-width: 85px;
   }
 
   p {

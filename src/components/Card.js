@@ -1,4 +1,4 @@
-import React from 'react';
+import { BiLinkExternal } from 'react-icons/bi';
 import {
   Text,
   Flex,
@@ -8,25 +8,48 @@ import {
   Heading,
   Stack,
   useColorModeValue,
+  Icon,
 } from '@chakra-ui/react';
 
-export default function PortfolioCard({ data, setModalContent, buttonColor }) {
-  const { title, description, image, repoUrl, demoUrl, modal } = data || {};
+export default function PortfolioCard({ data, setModalContent, sectionColor }) {
+  const { title, description, image, repoUrl, demoUrl, modal, tech, year } =
+    data ?? {};
+
   const cardBg = useColorModeValue('white', 'gray.900');
+
+  function handleClick() {
+    setModalContent({ list: modal, image, tech });
+  }
 
   return (
     <Box bg={cardBg} h="full" pos="relative">
-      <a href={demoUrl} rel="noopener noreferrer" target="_blank">
-        <Image
-          component="img"
-          h="180"
-          w="full"
-          src={image}
-          alt="site screenshot"
-          objectFit="cover"
-          objectPosition="50%, 20%"
-        />
-      </a>
+      <Image
+        component="img"
+        h="180"
+        w="full"
+        src={image}
+        alt="site screenshot"
+        objectFit="cover"
+        objectPosition="50%, 20%"
+        onClick={handleClick}
+        borderBottom="1px"
+        borderColor={sectionColor}
+      />
+      {year && (
+        <Text
+          bg={sectionColor}
+          color="white"
+          fontWeight="500"
+          pos="absolute"
+          top="134"
+          shadow="md"
+          right="0"
+          p={2}
+          borderRadius="10px 0 0 0"
+        >
+          {year}
+        </Text>
+      )}
 
       {/* CARD BOTTOM */}
       <Stack p="5" gap={3} h="full">
@@ -34,7 +57,6 @@ export default function PortfolioCard({ data, setModalContent, buttonColor }) {
           {title}
         </Heading>
         <Text
-          align="left"
           dangerouslySetInnerHTML={{
             __html: description,
           }}
@@ -49,19 +71,21 @@ export default function PortfolioCard({ data, setModalContent, buttonColor }) {
           left="50%"
           transform="translateX(-50%)"
         >
-          <a href={demoUrl} rel="noopener noreferrer" target="_blank">
-            <Button color="primary">Demo</Button>
-          </a>
+          {demoUrl && (
+            <a href={demoUrl} rel="noopener noreferrer" target="_blank">
+              <Button color="primary" type="button">
+                <Icon as={BiLinkExternal} mr={3} />
+                View
+              </Button>
+            </a>
+          )}
           {repoUrl && (
             <a href={repoUrl} rel="noopener noreferrer" target="_blank">
-              <Button $buttonColor={buttonColor}>Repo</Button>
+              <Button type="button">Repo</Button>
             </a>
           )}
           {modal && (
-            <Button
-              $buttonColor={buttonColor}
-              onClick={() => setModalContent({ list: modal, image })}
-            >
+            <Button onClick={handleClick} type="button">
               Info
             </Button>
           )}

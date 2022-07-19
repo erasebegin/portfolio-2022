@@ -2,7 +2,16 @@ import React, { useState } from 'react';
 import styled from '@emotion/styled';
 import { useTheme } from '@emotion/react';
 import { IoMdArrowDropright } from 'react-icons/io';
-import { Box, Button, Grid, Stack, useColorModeValue } from '@chakra-ui/react';
+import {
+  Box,
+  Button,
+  Grid,
+  Heading,
+  Icon,
+  Stack,
+  Text,
+  useColorModeValue,
+} from '@chakra-ui/react';
 import Card from './Card';
 import ImageModal from './ImageModal';
 import Divider from './Divider';
@@ -15,7 +24,6 @@ export default function Section({ sectionData }) {
     subtitle,
     color,
     dividerColor,
-    buttonColor,
     dividerAlt,
     sectionInfo,
     columns,
@@ -28,7 +36,6 @@ export default function Section({ sectionData }) {
 
   const convertDividerColor = () => {
     if (dividerColor === 'white') {
-
       if (shade === '800') return '#1A202C';
 
       return '#fff';
@@ -40,30 +47,56 @@ export default function Section({ sectionData }) {
   return (
     <Box
       pos="relative"
+      w="full"
       px={10}
       bg={`${color}.${shade}`}
       marginTop="0 !important"
     >
       <Divider color={() => convertDividerColor()} alt={dividerAlt} />
-      <Stack w="full" align="center" marginTop="0 !important" py={20}>
+      <Stack
+        w="full"
+        maxW="1200px"
+        align="center"
+        marginTop="0 !important"
+        py={20}
+        margin="auto"
+        gap={3}
+      >
         <ImageModal modalContent={modalContent} />
-        <Title>{title}</Title>
-        <Subtitle>{subtitle}</Subtitle>
+        <Heading as="h2" size="lg">
+          {title}
+        </Heading>
+        <Text maxW="600">{subtitle}</Text>
         {sectionInfo && (
-          <SectionInfo>
+          <Stack align="center" pb={5}>
             <SectionInfoBody showInfo={showInfo}>
-              <h4>{sectionInfo?.duration}</h4>
-              <p>{sectionInfo?.description}</p>
+              <Heading as="h3" size="md" fontWeight="300" mb={3}>
+                {sectionInfo?.duration}
+              </Heading>
+              <Text align="left" fontSize="md" mb={5}>
+                {sectionInfo?.description}
+              </Text>
               <TechIcons>
                 {sectionInfo?.tech.map(type => {
                   return <TechIcon type={type} key={type} />;
                 })}
               </TechIcons>
             </SectionInfoBody>
-            <Button onClick={() => setShowInfo(!showInfo)} showInfo={showInfo} colorScheme={color}>
-              More info <IoMdArrowDropright size="1.5rem" />
+            <Button
+              onClick={() => setShowInfo(!showInfo)}
+              showInfo={showInfo}
+              colorScheme={color}
+            >
+              More info
+              <Icon
+                as={IoMdArrowDropright}
+                w="1.5rem"
+                h="1.5rem"
+                transform={showInfo ? 'rotate(-90deg)' : 'rotate(90deg)'}
+                transition="400ms ease-in-out"
+              />
             </Button>
-          </SectionInfo>
+          </Stack>
         )}
         <Grid
           gap={3}
@@ -79,7 +112,11 @@ export default function Section({ sectionData }) {
             <Card
               key={`main-section-card-${index}`}
               data={cardData}
-              buttonColor={colors[buttonColor]}
+              sectionColor={`${color}.${
+                parseInt(shade) < 300
+                  ? parseInt(shade) + 500
+                  : parseInt(shade) - 400
+              }`}
               setModalContent={setModalContent}
             />
           ))}
@@ -88,31 +125,6 @@ export default function Section({ sectionData }) {
     </Box>
   );
 }
-
-const Title = styled.h2`
-  color: ${props => props.theme.colors.blackGreen};
-  margin-bottom: 0.5rem;
-  font-size: 2.5rem;
-  font-family: ${props => props.theme.fonts.title};
-  font-weight: 600;
-  font-size: 3rem;
-  text-align: center;
-`;
-
-const Subtitle = styled.h3`
-  text-align: center;
-  font-size: 1.2rem;
-  margin: auto;
-  padding-bottom: 2rem;
-  max-width: 600px;
-`;
-
-const SectionInfo = styled.div`
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  padding-bottom: 3rem;
-`;
 
 const SectionInfoBody = styled.div`
   text-align: center;

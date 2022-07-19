@@ -7,10 +7,10 @@ export default function Logos({ showLogos }) {
   const [isMobile] = useMediaQuery('(max-width: 48em)');
 
   const logoArr = [
-    'javascript',
+    'firebase',
     'react',
     'graphql',
-    'gatsby',
+    'chakra',
     'next-js',
     'jira',
     'sass',
