@@ -61,13 +61,16 @@ function generateCircleLayout(itemCount, circleSize, itemSize, options) {
     width: ${circleSize};
     height: ${circleSize};
 
+    img {
+      width: ${itemSize};
+      height: ${itemSize};
+    }
+
     > * {
       display: block;
       position: absolute;
       top: 33%;
       left: 33%;
-      width: ${itemSize};
-      height: ${itemSize};
       margin: ${parseInt(itemSize) / 2}px;
 
       ${transformationString}
@@ -82,20 +85,19 @@ function generateCircleLayout(itemCount, circleSize, itemSize, options) {
 
 const CircleArrangement = styled.ul`
   ${props => {
-        if(props.$isMobile) {
-          return generateCircleLayout(10, '190px', '35px', { toggle: props.$show })
-        } 
-
-        return generateCircleLayout(10, '300px', '50px', { toggle: props.$show })
-      }
+    if (props.$isMobile) {
+      return generateCircleLayout(10, '190px', '35px', { toggle: props.$show });
     }
+
+    return generateCircleLayout(10, '300px', '50px', { toggle: props.$show });
+  }}
 
   list-style: none;
   padding: 0;
   border-radius: 50%;
   position: absolute;
   left: 50%;
-  top: 50%;
+  top: 45%;
   transform: translate(-50%, -50%);
   z-index: -1;
 `;
