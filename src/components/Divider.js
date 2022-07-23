@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from '@emotion/styled';
 
-export default function Divider({ color, alt, invert }) {
+export default function Divider({ color, alt, invert, pixelOffset }) {
 
   if (alt) {
     return (
@@ -50,7 +50,7 @@ export default function Divider({ color, alt, invert }) {
 
 const StyledSvg = styled.div`
   position: absolute;
-  top: -1px;
+  top: 0;
   left: 0;
   width: 100%;
   transform-origin: 0% 0%;
@@ -60,6 +60,10 @@ const StyledSvg = styled.div`
 
   ${props => props.$invert && `
     transform: scaleY(-0.5);
+  `}
+
+  ${props => props.$pixelOffset && `
+    top: -1px;
   `}
 
   svg {

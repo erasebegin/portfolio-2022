@@ -22,7 +22,7 @@ export default function PortfolioCard({ data, setModalContent, sectionColor }) {
   }
 
   return (
-    <Box bg={cardBg} h="full" pos="relative">
+    <Box bg={cardBg} pos="relative">
       <Image
         component="img"
         h="180"
@@ -52,7 +52,7 @@ export default function PortfolioCard({ data, setModalContent, sectionColor }) {
       )}
 
       {/* CARD BOTTOM */}
-      <Stack p="5" gap={3} h="full">
+      <Stack p="5" gap={3}>
         <Heading as="h5" size="md">
           {title}
         </Heading>

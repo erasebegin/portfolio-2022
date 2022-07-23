@@ -1,8 +1,9 @@
-import { useState } from "react";
-import styled from "@emotion/styled";
+import { useState } from 'react';
+import styled from '@emotion/styled';
+import { Text } from '@chakra-ui/react';
 
-export default function Icon({ type }) {
-  const typeSplit = type.split("-").join(" ");
+export default function Icon({ type, labelColor }) {
+  const typeSplit = type.split('-').join(' ');
   const [show, setShow] = useState(false);
 
   return (
@@ -12,31 +13,23 @@ export default function Icon({ type }) {
       show={show}
     >
       <img src={`./images/logos/${type}.svg`} alt={`${type} icon`} />
-      <p>{typeSplit}</p>
+      <Text bg={labelColor}>{typeSplit}</Text>
     </IconContainer>
   );
 }
 
 const IconContainer = styled.div`
-  margin-left: 0.5rem;
-  margin-right: 0.5rem;
   position: relative;
-
-  @media (max-width: 400px) {
-    margin-bottom: 1rem;
-  }
-
-  &:first-child {
-    margin-left: 0;
-  }
-
-  &:last-child {
-    margin-right: 0;
-  }
 
   img {
     max-height: 50px;
     max-width: 85px;
+    margin: auto;
+
+    @media (max-width: 500px) {
+      max-height: 40px;
+      max-width: 75px;
+    }
   }
 
   p {
@@ -45,7 +38,6 @@ const IconContainer = styled.div`
     top: -3rem;
     left: 50%;
     transform: translateX(-50%);
-    background: black;
     color: white;
     padding: 0.5rem;
     padding-bottom: 0.5rem !important;
@@ -53,7 +45,13 @@ const IconContainer = styled.div`
     transition: opacity 200ms;
     white-space: nowrap;
 
-    ${props => !props.show && `
+    @media (max-width: 500px) {
+      font-size: 1rem;
+    }
+
+    ${props =>
+      !props.show &&
+      `
       opacity: 0;
       pointer-events: none;
     `};

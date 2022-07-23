@@ -15,10 +15,11 @@ export default function Footer({ setOpenContact }) {
 
   return (
     <Box
+      as="footer"
       bg={colors.yellow[300]}
       pos="relative"
       w="full"
-      pt={10}
+      py={20}
       marginTop="-1rem !important"
     >
       <Divider color={colors.yellow[300]} invert />

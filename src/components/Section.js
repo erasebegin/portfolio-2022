@@ -6,6 +6,7 @@ import {
   Box,
   Button,
   Grid,
+  GridItem,
   Heading,
   Icon,
   Stack,
@@ -46,11 +47,13 @@ export default function Section({ sectionData }) {
 
   return (
     <Box
+      as="section"
       pos="relative"
       w="full"
       px={10}
       bg={`${color}.${shade}`}
       marginTop="0 !important"
+      _last={{ pb: 20 }}
     >
       <Divider color={() => convertDividerColor()} alt={dividerAlt} />
       <Stack
@@ -76,11 +79,36 @@ export default function Section({ sectionData }) {
               <Text align="left" fontSize="md" mb={5}>
                 {sectionInfo?.description}
               </Text>
-              <TechIcons>
+              <Grid
+                templateColumns={[
+                  'repeat(4, 1fr)',
+                  'repeat(5, 1fr)',
+                  'repeat(6, 1fr)',
+                ]}
+                templateRows="auto"
+                alignItems="center"
+                justifyContent="center"
+                rowGap={5}
+                bg="#ffffff55"
+                p={5}
+                borderRadius={5}
+              >
                 {sectionInfo?.tech.map(type => {
-                  return <TechIcon type={type} key={type} />;
+                  return (
+                    <GridItem>
+                      <TechIcon
+                        type={type}
+                        key={type}
+                        labelColor={`${color}.${
+                          parseInt(shade) < 300
+                            ? parseInt(shade) + 500
+                            : parseInt(shade) - 400
+                        }`}
+                      />
+                    </GridItem>
+                  );
                 })}
-              </TechIcons>
+              </Grid>
             </SectionInfoBody>
             <Button
               onClick={() => setShowInfo(!showInfo)}
@@ -142,14 +170,4 @@ const SectionInfoBody = styled.div`
   h4 {
     font-weight: bold;
   }
-`;
-
-const TechIcons = styled.div`
-  display: flex;
-  align-items: center;
-  justify-content: space-around;
-  padding: 1rem 2rem;
-  flex-wrap: wrap;
-  background: #ffffff55;
-  border-radius: 0.5rem;
 `;

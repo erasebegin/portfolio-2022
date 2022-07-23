@@ -52,7 +52,7 @@ export default function Contact({ isOpen, setIsOpen }) {
           zIndex={-1}
         >
           <Stack justify="start" h="full">
-              <HiX />
+            <HiX />
           </Stack>
         </Button>
         <Heading as="h2" size="lg" mb={5}>
@@ -68,6 +68,7 @@ export default function Contact({ isOpen, setIsOpen }) {
                 id="name"
                 placeholder="Name"
                 type="text"
+                name="name"
                 _placeholder={{ color: 'gray.400' }}
                 variant="flushed"
                 onChange={e => setName(e.target.value)}
@@ -82,6 +83,7 @@ export default function Contact({ isOpen, setIsOpen }) {
                 id="email"
                 placeholder="Email"
                 type="email"
+                name="email"
                 _placeholder={{ color: 'gray.400' }}
                 variant="flushed"
                 onChange={e => setEmail(e.target.value)}
@@ -95,13 +97,18 @@ export default function Contact({ isOpen, setIsOpen }) {
               <Textarea
                 id="message"
                 placeholder="Message"
+                name="message"
                 _placeholder={{ color: 'gray.400' }}
                 variant="flushed"
                 onChange={e => setMessage(e.target.value)}
                 value={message}
               />
             </FormControl>
-            <Button colorScheme="blue" disabled={!email || !message}>
+            <Button
+              colorScheme="blue"
+              disabled={!email || !message}
+              type="submit"
+            >
               <GiLetterBomb size="2rem" />
             </Button>
           </Stack>
