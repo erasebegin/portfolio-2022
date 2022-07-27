@@ -386,11 +386,15 @@ const data = [
         'sass',
         'netlify',
         'react',
+        'firebase',
+        'gatsby',
+        'node',
       ],
     },
     cards: [
       {
         title: 'URL Shortener',
+        year: '2021',
         description:
           'A small project to get comfortable with the Firebase/Firestore API',
         image:
@@ -400,6 +404,7 @@ const data = [
       },
       {
         title: 'Github User Search',
+        year: '2021',
         description:
           'Search utility to find information and repositories of Github users by name',
         image: './images/github-search.png',
@@ -408,6 +413,7 @@ const data = [
       },
       {
         title: 'Hacker News Front End',
+        year: '2021',
         description:
           'A front end for the somewhat quirky Hacker News API showing the top 10 stories and a comment tree',
         image: './images/hacker-news-frontend.png',
@@ -416,6 +422,7 @@ const data = [
       },
       {
         title: 'Scrabble Letters',
+        year: '2020',
         description:
           'A small web app that acts as a virtual scrabble letter bag for use in online classrooms',
         image: './images/scrabble.png',
@@ -424,6 +431,7 @@ const data = [
       },
       {
         title: 'Weather Search',
+        year: '2020',
         description:
           'Node Express weather API with a Handlebars front-end. Icons are all made by me ^_^',
         image: './images/weather.png',
@@ -432,6 +440,7 @@ const data = [
       },
       {
         title: 'Necessary Products',
+        year: '2019',
         description:
           'A spoof product page created as one of my first explorations in to front-end development',
         image: './images/necessary.png',
@@ -440,6 +449,7 @@ const data = [
       },
       {
         title: 'Jotter',
+        year: '2019',
         description:
           'A kind of PWA created in order to experiment with the localStorage browser functionality',
         image: './images/jotter.png',
@@ -448,6 +458,7 @@ const data = [
       },
       {
         title: 'Tyrex Unsurance',
+        year: '2019',
         description:
           'Practicing CSS styling, specifically CSS grid by creating a spoof business page',
         image: './images/tyrex.png',

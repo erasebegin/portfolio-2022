@@ -1,4 +1,4 @@
-import { Box, Flex } from '@chakra-ui/react';
+import { Box, Flex, useColorModeValue } from '@chakra-ui/react';
 import styled from '@emotion/styled';
 import { useTheme } from '@emotion/react';
 import {
@@ -13,16 +13,21 @@ import Divider from './Divider';
 export default function Footer({ setOpenContact }) {
   const colors = useTheme().colors;
 
+  const colorModeValue = useColorModeValue(
+    colors.yellow[300],
+    colors.gray[700]
+  );
+
   return (
     <Box
       as="footer"
-      bg={colors.yellow[300]}
+      bg={colorModeValue}
       pos="relative"
       w="full"
       py={20}
       marginTop="-1rem !important"
     >
-      <Divider color={colors.yellow[300]} invert />
+      <Divider color={colorModeValue} invert />
       <Flex justify="center" gap={5}>
         <a
           href="https://www.linkedin.com/in/chris-haupt/"

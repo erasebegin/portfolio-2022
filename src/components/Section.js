@@ -127,7 +127,7 @@ export default function Section({ sectionData }) {
           </Stack>
         )}
         <Grid
-          gap={3}
+          gap={5}
           templateColumns={[
             'repeat(1, 1fr)',
             'repeat(2, 1fr)',

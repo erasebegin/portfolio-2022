@@ -33,9 +33,9 @@ export default function ImageModal({ modalContent }) {
         <img src={modalContent?.image} alt="website project screenshot" />
         {modalContent.list && (
           <Box p={5}>
-            <Flex justify="center" pb={5}>
+            <Flex justify="center" pb={5} gap={5}>
               {modalContent?.tech?.map(type => (
-                <TechIcon type={type} />
+                <TechIcon type={type} labelColor={detailBg2} />
               ))}
             </Flex>
             {modalContent &&

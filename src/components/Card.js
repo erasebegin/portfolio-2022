@@ -70,6 +70,7 @@ export default function PortfolioCard({ data, setModalContent, sectionColor }) {
           bottom="1rem"
           left="50%"
           transform="translateX(-50%)"
+          overflowX="auto"
         >
           {demoUrl && (
             <a href={demoUrl} rel="noopener noreferrer" target="_blank">
